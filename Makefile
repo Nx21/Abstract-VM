@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nhanafi <nhanafi@student.42.fr>            +#+  +:+       +#+         #
+#    By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/23 22:47:45 by nhanafi           #+#    #+#              #
-#    Updated: 2023/05/21 01:12:47 by nhanafi          ###   ########.fr        #
+#    Updated: 2024/09/20 16:29:46 by nasreddineh      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,26 +14,31 @@
 CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++20
-SRC = main 
+
+SRC = main operand/Double operand/Float operand/Int16 operand/Int32 operand/Int8\
+	ofactory/operandfactory
 
 INC = include
 
-HEADER = 
+HEADER = include/common.hpp include/operand/Double.hpp\
+		include/operand/Float.hpp include/operand/IOperand.hpp\
+		include/operand/Int16.hpp include/operand/Int32.hpp\
+		include/operand/Int8.hpp include/ofactory/operandfactory.hpp
 
 ODIR = obj
 
 OBJ = $(addprefix $(ODIR)/, $(SRC:=.o))
 
-NAME = Server
+NAME = VM
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo $(OBJ)
-	@echo $(ODIR)/%.o
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 $(ODIR)/%.o: src/%.cpp $(HEADER)
+	@echo src/%.cpp
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -I$(INC) -c $< -o $@
 
