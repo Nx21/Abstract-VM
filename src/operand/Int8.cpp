@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:54:20 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/24 10:13:14 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/09/26 09:28:29 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Int8::Int8(std::string const &str){
     if(tmp > std::numeric_limits<int8_t>::max() || 
         tmp < std::numeric_limits<int8_t>::min())
         throw "out of range";  
-    
+    this->_val = tmp;
 }
 
 int Int8::getPrecision() const { 
@@ -45,4 +45,43 @@ IOperand const * Int8::operator+( IOperand const & rhs ) const{
     }
     double result = static_cast<double>(this->_val) + static_cast<double>(std::stod(rhs.toString()));
     return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
+}
+
+IOperand const * Int8::operator*( IOperand const & rhs ) const{
+    eOperandType type = std::max(this->getType(), rhs.getType());
+    if (type <= INT32) {
+        int64_t result = static_cast<int64_t>(this->_val) * static_cast<int64_t>(std::stoll(rhs.toString()));
+        return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
+    }
+    double result = static_cast<double>(this->_val) * static_cast<double>(std::stod(rhs.toString()));
+    return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
+}
+
+IOperand const * Int8::operator-( IOperand const & rhs ) const{
+    eOperandType type = std::max(this->getType(), rhs.getType());
+    if (type <= INT32) {
+        int64_t result = static_cast<int64_t>(this->_val) - static_cast<int64_t>(std::stoll(rhs.toString()));
+        return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
+    }
+    double result = static_cast<double>(this->_val) - static_cast<double>(std::stod(rhs.toString()));
+    return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
+}
+
+IOperand const * Int8::operator/( IOperand const & rhs ) const{
+    eOperandType type = std::max(this->getType(), rhs.getType());
+    if (type <= INT32) {
+        int64_t result = static_cast<int64_t>(this->_val) / static_cast<int64_t>(std::stoll(rhs.toString()));
+        return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
+    }
+    double result = static_cast<double>(this->_val) / static_cast<double>(std::stod(rhs.toString()));
+    return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
+}
+
+IOperand const * Int8::operator%( IOperand const & rhs ) const{
+    eOperandType type = std::max(this->getType(), rhs.getType());
+    if (type <= INT32) {
+        int64_t result = static_cast<int64_t>(this->_val) % static_cast<int64_t>(std::stoll(rhs.toString()));
+        return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
+    }
+    throw "Wrong type(s)";
 }
