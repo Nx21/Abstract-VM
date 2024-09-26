@@ -6,14 +6,14 @@
 #    By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/23 22:47:45 by nhanafi           #+#    #+#              #
-#    Updated: 2024/09/20 16:29:46 by nasreddineh      ###   ########.fr        #
+#    Updated: 2024/09/26 09:46:58 by nasreddineh      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = c++
 
-CFLAGS = -Wall -Werror -Wextra -std=c++20
+CFLAGS = -Wall -Werror -Wextra -std=c++17
 
 SRC = main operand/Double operand/Float operand/Int16 operand/Int32 operand/Int8\
 	ofactory/operandfactory
