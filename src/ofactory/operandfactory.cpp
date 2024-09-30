@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:25:54 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/24 09:57:34 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/09/27 12:39:52 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../include/common.hpp"
 
 IOperand const *OperandFactory::createOperand(eOperandType type, std::string const & value) const{
-    auto it = method_map.find(type);
+    auto it = this->method_map.find(type);
     if(it == method_map.end())
         throw "error type";
    return  (this->*it->second)(value);

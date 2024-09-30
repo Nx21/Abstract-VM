@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:57:13 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/26 11:20:25 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/09/30 09:58:44 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@
 #include "operand/IOperand.hpp"
 #include "vm/command.hpp"
 #include "vm/stack.hpp"
+#include "utils/trim.hpp"
+#include "utils/MutantStack.hpp"
 #endif

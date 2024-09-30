@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:16:37 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/26 11:33:25 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/09/27 13:33:32 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 #define  COMMAND_HPP
 
 #include "./stack.hpp"
+#include <map>
+#include <string>
 
-class command 
+class Command 
 {
     private:
         Stack _stack;
-    public:
+        typedef void (Command::*method_function)(std::string const &);
         void push(std::string const &str);
         void pop(std::string const &str);
+        void dump(std::string const &str);
         void assert(std::string const &str);
         void add(std::string const &str);
         void sub(std::string const &str);
@@ -30,7 +33,21 @@ class command
         void mod(std::string const &str);
         void print(std::string const &str);
         void exit(std::string const &str);
+        std::map<std::string, method_function > method_map = 
+        {
+            {"push", &Command::push},
+            {"pop", &Command::pop},
+            {"assert", &Command::assert},
+            {"add", &Command::add},
+            {"sub", &Command::sub},
+            {"mul", &Command::mul},
+            {"div", &Command::div},
+            {"mod", &Command::mod},
+            {"print", &Command::print},
+            {"exit", &Command::exit}
+        };
+    public:
+        void command(std::string const &str);
 
 };
-
 #endif
