@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:16:37 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/30 10:00:14 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/09/30 13:38:49 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ class Stack
         MutantStack<IOperand> _stack;
     public:
         void push(std::string const &str);
-        void dump();
         void pop();
-        void assert(std::string const &str);
+        void dump() const;
+        void Assert(std::string const &str);
         void add();
         void sub();
         void mul();

@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:54:20 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/26 09:28:25 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/02 09:56:37 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,14 @@ IOperand const * Int16::operator%( IOperand const & rhs ) const{
         return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
     }
     throw "Wrong type(s)";
+}
+
+bool Int16::operator==( IOperand const & rhs ) const{
+    eOperandType type = std::max(this->getType(), rhs.getType());
+    if (type <= INT32) {
+        bool result = (static_cast<int64_t>(this->_val) == static_cast<int64_t>(std::stoll(rhs.toString())));
+        return result;
+    }
+    bool result = (static_cast<double>(this->_val) == static_cast<double>(std::stod(rhs.toString())));
+    return result;
 }

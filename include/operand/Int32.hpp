@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 15:25:13 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/26 09:14:18 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/02 09:54:09 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Int32 : public IOperand
         IOperand const * operator*( IOperand const & rhs ) const ;
         IOperand const * operator/( IOperand const & rhs ) const ;
         IOperand const * operator%( IOperand const & rhs ) const ;
+        bool operator==( IOperand const & rhs ) const;
         std::string const & toString( void ) const ; 
         ~Int32( void );
 };

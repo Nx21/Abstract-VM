@@ -85,3 +85,13 @@ IOperand const * Int32::operator%( IOperand const & rhs ) const{
     }
     throw "Wrong type(s)";
 }
+
+bool Int32::operator==( IOperand const & rhs ) const{
+    eOperandType type = std::max(this->getType(), rhs.getType());
+    if (type <= INT32) {
+        bool result = (static_cast<int64_t>(this->_val) == static_cast<int64_t>(std::stoll(rhs.toString())));
+        return result;
+    }
+    bool result = (static_cast<double>(this->_val) == static_cast<double>(std::stod(rhs.toString())));
+    return result;
+}
