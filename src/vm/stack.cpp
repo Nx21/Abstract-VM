@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:28:55 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/02 10:03:50 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/02 13:32:39 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,54 @@ void Stack::Assert(std::string const &str)
     delete val1;
 }
 
+void Stack::add()
+{
+    if (!this->_stack.size()) {
+        throw "empty stack";
+    }
+    auto &val1 = this->_stack.top();
+    this->_stack.pop();
+    auto &val2 = this->_stack.top();
+    this->_stack.pop();
+    auto result = val1 + val2;
+    this->_stack.push(*result);
+}
+
+void Stack::sub()
+{
+    if (!this->_stack.size()) {
+        throw "empty stack";
+    }
+    auto &val1 = this->_stack.top();
+    this->_stack.pop();
+    auto &val2 = this->_stack.top();
+    this->_stack.pop();
+    auto result = val1 - val2;
+    this->_stack.push(*result);
+}
+
+void Stack::mul()
+{
+    if (!this->_stack.size()) {
+        throw "empty stack";
+    }
+    auto &val1 = this->_stack.top();
+    this->_stack.pop();
+    auto &val2 = this->_stack.top();
+    this->_stack.pop();
+    auto result = val1 * val2;
+    this->_stack.push(*result);
+}
+
+void Stack::div()
+{
+    if (!this->_stack.size()) {
+        throw "empty stack";
+    }
+    auto &val1 = this->_stack.top();
+    this->_stack.pop();
+    auto &val2 = this->_stack.top();
+    this->_stack.pop();
+    auto result = val1 / val2;
+    this->_stack.push(*result);
+}

@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:54:20 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/02 09:56:19 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/02 13:37:00 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,29 @@ IOperand const * Int8::operator-( IOperand const & rhs ) const{
     double result = static_cast<double>(this->_val) - static_cast<double>(std::stod(rhs.toString()));
     return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
 }
-
+//update other types 
 IOperand const * Int8::operator/( IOperand const & rhs ) const{
     eOperandType type = std::max(this->getType(), rhs.getType());
     if (type <= INT32) {
-        int64_t result = static_cast<int64_t>(this->_val) / static_cast<int64_t>(std::stoll(rhs.toString()));
+        auto dim = static_cast<int64_t>(std::stoll(rhs.toString()));
+        if(dim == 0)
+            throw "division by zero";
+        int64_t result = static_cast<int64_t>(this->_val) / dim;
         return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
     }
-    double result = static_cast<double>(this->_val) / static_cast<double>(std::stod(rhs.toString()));
+     auto dim = static_cast<double>(std::stod(rhs.toString()));
+        if(dim == 0)
+            throw "division by zero";
+    double result = static_cast<double>(this->_val) / dim;
     return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
 }
 
 IOperand const * Int8::operator%( IOperand const & rhs ) const{
     eOperandType type = std::max(this->getType(), rhs.getType());
     if (type <= INT32) {
+        auto dim = static_cast<int64_t>(std::stoll(rhs.toString()));
+        if(dim == 0)
+            throw "integer modulo by zero";
         int64_t result = static_cast<int64_t>(this->_val) % static_cast<int64_t>(std::stoll(rhs.toString()));
         return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
     }

@@ -6,7 +6,7 @@
 #    By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/23 22:47:45 by nhanafi           #+#    #+#              #
-#    Updated: 2024/09/26 09:46:58 by nasreddineh      ###   ########.fr        #
+#    Updated: 2024/10/04 10:52:07 by nasreddineh      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INC = include
 HEADER = include/common.hpp include/operand/Double.hpp\
 		include/operand/Float.hpp include/operand/IOperand.hpp\
 		include/operand/Int16.hpp include/operand/Int32.hpp\
-		include/operand/Int8.hpp include/ofactory/operandfactory.hpp
+		include/operand/Int8.hpp include/ofactory/operandfactory.hpp include/operand/BaseType.hpp
 
 ODIR = obj
 

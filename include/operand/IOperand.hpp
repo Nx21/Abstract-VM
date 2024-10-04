@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:07:19 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/30 14:31:27 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/04 10:53:29 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,6 @@ class IOperand {
     virtual std::string const & toString( void ) const = 0; // String representation of the instance
     virtual ~IOperand( void ) {}
 };
+
+
 #endif
