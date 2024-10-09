@@ -1,43 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Int32.cpp                                           :+:      :+:    :+:   */
+/*   Operand.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:54:20 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/24 10:47:40 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/02 13:37:00 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/operand/Int32.hpp"
+#include "../../include/common.hpp"
 #include <cstdint>
 #include <limits>
 #include <string>
 
-Int32::Int32() : _val(0)
+template<typename T>
+Operand<T>::Operand() : _val(0)
 {}
 
-Int32::~Int32()
+template<typename T>
+Operand<T>::~Operand()
 {}
 
-Int32::Int32(std::string const &str){
-    int64_t tmp = std::stoll(str);
-    if(tmp > std::numeric_limits<int32_t>::max() || 
-        tmp < std::numeric_limits<int32_t>::min())
-        throw "out of range";  
-    this->_val = tmp;
+template<typename T>
+Operand<T>::Operand(std::string const &str){
+   std::ostringstream oss;
+    oss << this->_val;
+    this->_type = SOperandFactory::StoEO[typeid(T)];
+    this->_valstr = toString(this->_val);
+
 }
 
-int Int32::getPrecision() const { 
+template<typename T>
+int Operand<T>::getPrecision() const { 
     return 0;
 }
 
-eOperandType Int32::getType( void ) const {
-    return INT32;
+template<typename T>
+eOperandType Operand<T>::getType( void ) const {
+    return this->_type;
 }
 
-IOperand const * Int32::operator+( IOperand const & rhs ) const{
+template<typename T>
+IOperand const * Operand<T>::operator+( IOperand const & rhs ) const{
     eOperandType type = std::max(this->getType(), rhs.getType());
     if (type <= INT32) {
         int64_t result = static_cast<int64_t>(this->_val) + static_cast<int64_t>(std::stoll(rhs.toString()));
@@ -47,7 +53,8 @@ IOperand const * Int32::operator+( IOperand const & rhs ) const{
     return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
 }
 
-IOperand const * Int32::operator*( IOperand const & rhs ) const{
+template<typename T>
+IOperand const * Operand<T>::operator*( IOperand const & rhs ) const{
     eOperandType type = std::max(this->getType(), rhs.getType());
     if (type <= INT32) {
         int64_t result = static_cast<int64_t>(this->_val) * static_cast<int64_t>(std::stoll(rhs.toString()));
@@ -57,7 +64,8 @@ IOperand const * Int32::operator*( IOperand const & rhs ) const{
     return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
 }
 
-IOperand const * Int32::operator-( IOperand const & rhs ) const{
+template<typename T>
+IOperand const * Operand<T>::operator-( IOperand const & rhs ) const{
     eOperandType type = std::max(this->getType(), rhs.getType());
     if (type <= INT32) {
         int64_t result = static_cast<int64_t>(this->_val) - static_cast<int64_t>(std::stoll(rhs.toString()));
@@ -67,26 +75,38 @@ IOperand const * Int32::operator-( IOperand const & rhs ) const{
     return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
 }
 
-IOperand const * Int32::operator/( IOperand const & rhs ) const{
+template<typename T>
+IOperand const * Operand<T>::operator/( IOperand const & rhs ) const{
     eOperandType type = std::max(this->getType(), rhs.getType());
     if (type <= INT32) {
-        int64_t result = static_cast<int64_t>(this->_val) / static_cast<int64_t>(std::stoll(rhs.toString()));
+        auto dim = static_cast<int64_t>(std::stoll(rhs.toString()));
+        if(dim == 0)
+            throw "division by zero";
+        int64_t result = static_cast<int64_t>(this->_val) / dim;
         return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
     }
-    double result = static_cast<double>(this->_val) / static_cast<double>(std::stod(rhs.toString()));
+     auto dim = static_cast<double>(std::stod(rhs.toString()));
+        if(dim == 0)
+            throw "division by zero";
+    double result = static_cast<double>(this->_val) / dim;
     return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
 }
 
-IOperand const * Int32::operator%( IOperand const & rhs ) const{
+template<typename T>
+IOperand const * Operand<T>::operator%( IOperand const & rhs ) const{
     eOperandType type = std::max(this->getType(), rhs.getType());
     if (type <= INT32) {
+        auto dim = static_cast<int64_t>(std::stoll(rhs.toString()));
+        if(dim == 0)
+            throw "integer modulo by zero";
         int64_t result = static_cast<int64_t>(this->_val) % static_cast<int64_t>(std::stoll(rhs.toString()));
         return SOperandFactory::OperandFactory.createOperand(type, std::to_string(result));
     }
     throw "Wrong type(s)";
 }
 
-bool Int32::operator==( IOperand const & rhs ) const{
+template<typename T>
+bool Operand<T>::operator==( IOperand const & rhs ) const{
     eOperandType type = std::max(this->getType(), rhs.getType());
     if (type <= INT32) {
         bool result = (static_cast<int64_t>(this->_val) == static_cast<int64_t>(std::stoll(rhs.toString())));

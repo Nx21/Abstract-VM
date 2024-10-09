@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:25:54 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/30 11:59:51 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/09 17:30:34 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,13 @@ eOperandType StoEO::operator[](std::string const &str)
     auto it = this->_val.find(str);
     if(this->_val.find(str) == this->_val.end())
         throw "invalid key " + str + "\n";
+    return it->second;
+};
+
+eOperandType StoEO::operator[](std::type_index  type)
+{
+    auto it = this->_valt.find(type);
+    if(this->_valt.find(type) == this->_valt.end())
+        throw "invalid key \n";
     return it->second;
 };

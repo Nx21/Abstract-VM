@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IOperand.hpp                                       :+:      :+:    :+:   */
+/*   Operand.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:07:19 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/04 10:53:29 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/09 17:29:05 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IOPERAND_HPP
-#define  IOPERAND_HPP
+#ifndef OPERAND_HPP
+#define  OPERAND_HPP
+
+#include <cstdint>
 #include <iostream>
+#include <string>
 
 enum eOperandType
 {
@@ -38,5 +41,34 @@ class IOperand {
     virtual ~IOperand( void ) {}
 };
 
+template<typename T>
+class Operand :public IOperand 
+{
+    private:
+        T _val;
+        eOperandType _type;
+        std::string _valstr;
+    public:
+        Operand(std::string const &str);
+        Operand(T const &val);
+        Operand();
+        int getPrecision( void ) const ;
+        eOperandType getType( void ) const ;
+        IOperand const * operator+( IOperand const & rhs ) const ;
+        IOperand const * operator-( IOperand const & rhs ) const ; 
+        IOperand const * operator*( IOperand const & rhs ) const ;
+        IOperand const * operator/( IOperand const & rhs ) const ;
+        IOperand const * operator%( IOperand const & rhs ) const ; 
+        bool operator==( IOperand const & rhs ) const;
+        std::string const & toString( void ) const ;
+        ~Operand( void );
+};
+
+
+using Int8 = Operand<int8_t>;
+using Int16 = Operand<int16_t>;
+using Int32 = Operand<int32_t>;
+using Float = Operand<float>;
+using Double = Operand<double>;
 
 #endif

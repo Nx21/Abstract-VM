@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:16:37 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/30 13:38:49 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/09 17:36:39 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define  STACK_HPP
 
 #include "../utils/MutantStack.hpp"
-#include "../operand/IOperand.hpp"
+#include "../operand/Operand.hpp"
 
 class Stack 
 {

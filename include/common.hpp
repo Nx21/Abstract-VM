@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:57:13 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/30 09:58:44 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/09 17:50:16 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@
 #include <algorithm>
 #include <map>
 #include "ofactory/operandfactory.hpp"
-#include "operand/Int8.hpp"
-#include "operand/Int16.hpp"
-#include "operand/Int32.hpp"
-#include "operand/Double.hpp"
-#include "operand/Float.hpp"
-#include "operand/IOperand.hpp"
+#include "operand/Operand.hpp"
 #include "vm/command.hpp"
 #include "vm/stack.hpp"
 #include "utils/trim.hpp"
+#include <sstream>
 #include "utils/MutantStack.hpp"
 #endif

@@ -6,16 +6,19 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:25:54 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/30 11:58:03 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/09 17:54:09 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OPRANDFACTORY_HPP
 # define OPRANDFACTORY_HPP
-#include "../operand/IOperand.hpp"
+#include "../operand/Operand.hpp"
 #include <cstddef>
 #include <map>
 #include <string>
+#include <typeinfo>
+#include <typeindex>
+
 
 class OperandFactory{
     public:
@@ -40,9 +43,19 @@ class OperandFactory{
 class StoEO
 {
     public:
+        eOperandType operator[](std::type_index  type);
         eOperandType operator[](std::string const &str);
         
     private:
+        std::map<std::type_index,eOperandType> _valt = 
+        {
+            {typeid(int8_t), INT8},
+            {typeid(int16_t), INT16},
+            {typeid(int32_t), INT32},
+            {typeid(float_t), FLOAT},
+            {typeid(double_t), DOUBLE}
+
+        };
         std::map<std::string,eOperandType> _val = 
         {
             {"int8", INT8},
