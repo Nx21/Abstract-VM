@@ -6,11 +6,13 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 23:24:18 by nhanafi           #+#    #+#             */
-/*   Updated: 2024/09/27 12:31:41 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/10 10:06:25 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
+#ifndef TRIM_HPP
+# define TRIM_HPP
 
 #include <string>
 
@@ -31,3 +33,4 @@ void trim(std::string &s, std::string w)
     rtrim(s,w);
     ltrim(s,w);
 }
+#endif

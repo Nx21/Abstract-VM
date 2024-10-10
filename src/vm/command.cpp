@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 12:22:14 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/09/30 11:19:25 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/10 10:16:44 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void Command::push(std::string const &str){
 void Command::assert(std::string const &str){
     if(str == "" || str.find_first_not_of("1234567890.-+"))
         throw "invalid syntax " + str + "\n";
-    this->_stack.assert(str);
+    this->_stack.Assert(str);
 }
 
 void Command::pop(std::string const &str){

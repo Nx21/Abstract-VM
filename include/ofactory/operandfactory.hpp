@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:25:54 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/09 17:54:09 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/10 09:33:00 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ class StoEO
             {"int32", INT32},
             {"float", FLOAT},
             {"double", DOUBLE}
-
         };
 };
 

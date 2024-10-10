@@ -25,11 +25,10 @@ Operand<T>::~Operand()
 
 template<typename T>
 Operand<T>::Operand(std::string const &str){
-   std::ostringstream oss;
+    std::ostringstream oss(str);
     oss << this->_val;
     this->_type = SOperandFactory::StoEO[typeid(T)];
     this->_valstr = toString(this->_val);
-
 }
 
 template<typename T>
