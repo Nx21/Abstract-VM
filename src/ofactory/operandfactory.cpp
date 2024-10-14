@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:25:54 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/09 17:30:34 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/10 15:34:40 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ IOperand const *SOperandFactory::StoO(const std::string &str)
     trim(key, " \n\t()");
     std::string value = str.substr(pos);
     trim(value, " \n\t()");
-    return OperandFactory.createOperand(StoEO[key], value);
+    return OperandFactory().createOperand(StoEO(key), value);
 }
 
 eOperandType StoEO::operator[](std::string const &str)

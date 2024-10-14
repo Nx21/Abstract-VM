@@ -6,23 +6,24 @@
 #    By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/23 22:47:45 by nhanafi           #+#    #+#              #
-#    Updated: 2024/10/10 09:47:59 by nasreddineh      ###   ########.fr        #
+#    Updated: 2024/10/14 14:51:20 by nasreddineh      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = c++
 
-CFLAGS = -Wall -Werror -Wextra -std=c++17
+CFLAGS = -std=c++20
 
-SRC = main operand/Operand ofactory/operandfactory\
+SRC = main ofactory/operandfactory\
 		vm/stack vm/command
 
 INC = include
 
 HEADER = include/common.hpp include/operand/Operand.hpp\
 		 include/ofactory/operandfactory.hpp\
-		 include/vm/stack.hpp include/vm/command.hpp
+		 include/vm/stack.hpp include/vm/command.hpp\
+		 include/operand/Operand_detail.hpp include/operand/IOperand.hpp
 
 ODIR = obj
 

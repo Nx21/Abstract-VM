@@ -6,13 +6,12 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 12:22:14 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/10 10:16:44 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/14 15:05:22 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/common.hpp"
-#include <cstddef>
-#include <string>
+#include "../../include/vm/command.hpp"
+#include "../../include/utils/trim.hpp"
 
 
 void Command::command(std::string const &str){
@@ -35,7 +34,7 @@ void Command::push(std::string const &str){
     this->_stack.push(str);
 }
 
-void Command::assert(std::string const &str){
+void Command::Assert(std::string const &str){
     if(str == "" || str.find_first_not_of("1234567890.-+"))
         throw "invalid syntax " + str + "\n";
     this->_stack.Assert(str);

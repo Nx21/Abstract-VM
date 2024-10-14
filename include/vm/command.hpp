@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:16:37 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/09 17:54:28 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/14 14:59:37 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Command
         void push(std::string const &str);
         void pop(std::string const &str);
         void dump(std::string const &str);
-        void assert(std::string const &str);
+        void Assert(std::string const &str);
         void add(std::string const &str);
         void sub(std::string const &str);
         void mul(std::string const &str);
@@ -37,7 +37,7 @@ class Command
         {
             {"push", &Command::push},
             {"pop", &Command::pop},
-            {"assert", &Command::assert},
+            {"assert", &Command::Assert},
             {"add", &Command::add},
             {"sub", &Command::sub},
             {"mul", &Command::mul},

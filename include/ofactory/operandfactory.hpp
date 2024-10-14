@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:25:54 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/10 09:33:00 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/14 13:53:13 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 class OperandFactory{
     public:
+        OperandFactory(){};
         IOperand const * createOperand( eOperandType type, std::string const & value ) const;
     private:
         typedef IOperand const * (OperandFactory::*method_function)(std::string const &) const;
@@ -45,7 +46,7 @@ class StoEO
     public:
         eOperandType operator[](std::type_index  type);
         eOperandType operator[](std::string const &str);
-        
+        StoEO(){};
     private:
         std::map<std::type_index,eOperandType> _valt = 
         {
@@ -68,10 +69,21 @@ class StoEO
 
 class SOperandFactory{
     public:
-        static OperandFactory OperandFactory;
-        static StoEO StoEO;
+        SOperandFactory(){};
+        static OperandFactory const OperandFactory()
+        {
+            static class OperandFactory _OperandFactory;
+            return _OperandFactory;
+        };
+        static eOperandType StoEO(std::string const &str){
+            static class StoEO _StoEO;
+            return _StoEO[str];
+        };
+        static eOperandType StoEO(std::type_index const &str){
+            static class StoEO _StoEO;
+            return _StoEO[str];
+        };;
         static IOperand const * StoO(std::string const &str);
-
 };
 
 #endif
