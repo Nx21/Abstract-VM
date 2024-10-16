@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   file_parsing.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 15:43:35 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/14 15:43:44 by nasreddineh      ###   ########.fr       */
+/*   Created: 2024/10/16 13:57:56 by nasreddineh       #+#    #+#             */
+/*   Updated: 2024/10/16 14:09:11 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FILE_PARSING_HPP
+#define  FILE_PARSING_HPP
+#include "../vm/command.hpp"
+#include <fstream>
+#include <string>
 
-#include "../include/common.hpp"
-int main()
-{
-    
-}
+class FileParising{
+    private:
+        Command _command;
+        std::ifstream _file;
+    public:
+        FileParising(std::string const &filename);
+};
+
+#endif

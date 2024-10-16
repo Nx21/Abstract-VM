@@ -6,7 +6,7 @@
 /*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 12:22:14 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/14 15:05:22 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/10/16 14:11:18 by nasreddineh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ void Command::print(std::string const &str){
 void Command::exit(std::string const &str){
     if(str != "")
         throw "invalid syntax " + str + "\n";
-    
+    exit(0);
 }
 
