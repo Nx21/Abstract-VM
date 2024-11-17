@@ -37,10 +37,10 @@ IOperand const *Operand<T>::operator+( IOperand const & rhs ) const{
     eOperandType type = std::max(this->getType(), rhs.getType());
     if (type <= INT32) {
         int64_t result = static_cast<int64_t>(this->_val) + static_cast<int64_t>(std::stoll(rhs.toString()));
-        return SOperandFactory::OperandFactory().createOperand(type, std::to_string(result));
+        return SOperandFactory::_OperandFactory().createOperand(type, std::to_string(result));
     }
     double result = static_cast<double>(this->_val) + static_cast<double>(std::stod(rhs.toString()));
-    return SOperandFactory::OperandFactory().createOperand(type, std::to_string(result));
+    return SOperandFactory::_OperandFactory().createOperand(type, std::to_string(result));
 }
 
 template<class T>
@@ -48,10 +48,10 @@ IOperand const * Operand<T>::operator*( IOperand const & rhs ) const{
     eOperandType type = std::max(this->getType(), rhs.getType());
     if (type <= INT32) {
         int64_t result = static_cast<int64_t>(this->_val) * static_cast<int64_t>(std::stoll(rhs.toString()));
-        return SOperandFactory::OperandFactory().createOperand(type, std::to_string(result));
+        return SOperandFactory::_OperandFactory().createOperand(type, std::to_string(result));
     }
     double result = static_cast<double>(this->_val) * static_cast<double>(std::stod(rhs.toString()));
-    return SOperandFactory::OperandFactory().createOperand(type, std::to_string(result));
+    return SOperandFactory::_OperandFactory().createOperand(type, std::to_string(result));
 }
 
 template<class T>
@@ -59,10 +59,10 @@ IOperand const * Operand<T>::operator-( IOperand const & rhs ) const{
     eOperandType type = std::max(this->getType(), rhs.getType());
     if (type <= INT32) {
         int64_t result = static_cast<int64_t>(this->_val) - static_cast<int64_t>(std::stoll(rhs.toString()));
-        return SOperandFactory::OperandFactory().createOperand(type, std::to_string(result));
+        return SOperandFactory::_OperandFactory().createOperand(type, std::to_string(result));
     }
     double result = static_cast<double>(this->_val) - static_cast<double>(std::stod(rhs.toString()));
-    return SOperandFactory::OperandFactory().createOperand(type, std::to_string(result));
+    return SOperandFactory::_OperandFactory().createOperand(type, std::to_string(result));
 }
 
 template<class T>
@@ -73,13 +73,13 @@ IOperand const * Operand<T>::operator/( IOperand const & rhs ) const{
         if(dim == 0)
             throw "division by zero";
         int64_t result = static_cast<int64_t>(this->_val) / dim;
-        return SOperandFactory::OperandFactory().createOperand(type, std::to_string(result));
+        return SOperandFactory::_OperandFactory().createOperand(type, std::to_string(result));
     }
      auto dim = static_cast<double>(std::stod(rhs.toString()));
         if(dim == 0)
             throw "division by zero";
     double result = static_cast<double>(this->_val) / dim;
-    return SOperandFactory::OperandFactory().createOperand(type, std::to_string(result));
+    return SOperandFactory::_OperandFactory().createOperand(type, std::to_string(result));
 }
 
 template<class T>
@@ -90,7 +90,7 @@ IOperand const * Operand<T>::operator%( IOperand const & rhs ) const{
         if(dim == 0)
             throw "integer modulo by zero";
         int64_t result = static_cast<int64_t>(this->_val) % static_cast<int64_t>(std::stoll(rhs.toString()));
-        return SOperandFactory::OperandFactory().createOperand(type, std::to_string(result));
+        return SOperandFactory::_OperandFactory().createOperand(type, std::to_string(result));
     }
     throw "Wrong type(s)";
 }

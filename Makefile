@@ -13,7 +13,7 @@
 
 CC = c++
 
-CFLAGS = -std=c++20
+CFLAGS = -std=c++20 -Werror -Wall -Wextra
 
 SRC = main ofactory/operandfactory\
 		vm/stack vm/command

@@ -53,8 +53,8 @@ class StoEO
             {typeid(int8_t), INT8},
             {typeid(int16_t), INT16},
             {typeid(int32_t), INT32},
-            {typeid(float_t), FLOAT},
-            {typeid(double_t), DOUBLE}
+            {typeid(float), FLOAT},
+            {typeid(double), DOUBLE}
 
         };
         std::map<std::string,eOperandType> _val = 
@@ -70,7 +70,7 @@ class StoEO
 class SOperandFactory{
     public:
         SOperandFactory(){};
-        static OperandFactory const OperandFactory()
+        static OperandFactory const _OperandFactory()
         {
             static class OperandFactory _OperandFactory;
             return _OperandFactory;
