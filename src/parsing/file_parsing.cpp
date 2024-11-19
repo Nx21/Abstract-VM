@@ -14,7 +14,7 @@
 #include <cstddef>
 #include <string>
 
-FileParising::FileParising(std::string const &filename)
+FileParsing::FileParsing(std::string const &filename)
 {
     this->_file.open(filename);
     if (!this->_file.is_open())
@@ -23,11 +23,11 @@ FileParising::FileParising(std::string const &filename)
     this->exec();
 }
 
-void FileParising::checker()
+void FileParsing::checker()
 {
     try {
         std::string s;
-        for (size_t nl; getline(_file, s); nl++)
+        for (size_t nl = 1; getline(_file, s); nl++)
         {
             this->parseLine(nl, s);
         }
@@ -37,9 +37,10 @@ void FileParising::checker()
     
 }
 
-void FileParising::parseLine(size_t nl, std::string &s)
+void FileParsing::parseLine(size_t nl, std::string &s)
 {
     t_commandList cmd ;
+    cmd.line_number = nl;
     trim(s, "\n\t ");
     if (s.find(";;") == 0)
         return;
@@ -54,9 +55,21 @@ void FileParising::parseLine(size_t nl, std::string &s)
     cmd.command = key;
     if(it->second)
     {
+        pos = val.find('(');
+        if(pos == val.npos )
+            throw "line " + std::to_string(nl) +  ": messing '(' " + val;
+        
         
     }
     else if (val != "")
         throw "line " + std::to_string(nl) +  ": invalid value " + val;
     this->_listCommand.push_back(cmd);
+}
+
+void FileParsing::exec()
+{
+    for(auto l: this->_listCommand)
+    {
+        std::cout << l.line_number << " " << l.command << " " << l.value << " "<< l.type << std::endl;
+    }
 }

@@ -1,0 +1,4 @@
+push int(a)
+pop
+add
+sub

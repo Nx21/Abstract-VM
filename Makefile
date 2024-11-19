@@ -16,7 +16,7 @@ CC = c++
 CFLAGS = -std=c++20 -Werror -Wall -Wextra
 
 SRC = main ofactory/operandfactory\
-		vm/stack vm/command
+		vm/stack vm/command parsing/file_parsing
 
 INC = include
 

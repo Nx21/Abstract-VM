@@ -64,6 +64,13 @@ void Command::sub(std::string const &str){
     this->_stack.sub();
 }
 
+void Command::mul(std::string const &str){
+    if(str != "")
+        throw "invalid syntax " + str + "\n";
+    this->_stack.mul();
+}
+
+
 void Command::mod(std::string const &str){
     if(str != "")
         throw "invalid syntax " + str + "\n";

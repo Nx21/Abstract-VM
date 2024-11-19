@@ -27,7 +27,7 @@ typedef struct s_commandList
 } t_commandList;
 
 
-class FileParising{
+class FileParsing{
     private:
         Command _execCommand;
         std::ifstream _file;
@@ -49,7 +49,7 @@ class FileParising{
             {"exit", 0}
         };
     public:
-        FileParising(std::string const &filename);
+        FileParsing(std::string const &filename);
 };
 
 

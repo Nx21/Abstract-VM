@@ -12,7 +12,15 @@
 
 
 #include "../include/common.hpp"
-int main()
+int main(int ac, char**av)
 {
-    
+    if(ac > 1)
+    {
+        std::string s(av[1]);
+        FileParsing f(s);
+    }
+    else
+    {
+
+    }
 }
