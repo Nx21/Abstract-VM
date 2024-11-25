@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   common.hpp                                         :+:      :+:    :+:   */
+/*   Command_list.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nasr <nasr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:57:13 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/11/19 19:12:55 by nasr             ###   ########.fr       */
+/*   Created: 2024/11/19 19:11:00 by nasr              #+#    #+#             */
+/*   Updated: 2024/11/19 19:12:32 by nasr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef COMMON_HPP
-# define COMMON_HPP
-
+#ifndef COMMAND_LIST
+#define COMMAND_LIST
 #include <iostream>
-#include <algorithm>
-#include <map>
-#include "parsing/file_parsing.hpp"
-#include "utils/trim.hpp"
-#include "utils/Command_list.hpp"
-#include <sstream>
-#include <cstddef>
-#include <string>
-#include <cassert>
+
+typedef struct s_commandList
+{
+    size_t line_number;
+    std::string command;
+    std::string value;
+    std::string type;
+} t_commandList;
+
 #endif

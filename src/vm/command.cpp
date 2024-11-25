@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   command.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
+/*   By: nasr <nasr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 12:22:14 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/16 14:11:18 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/11/19 19:24:29 by nasr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/vm/command.hpp"
-#include "../../include/utils/trim.hpp"
+#include "../../include/common.hpp"
 
 
 void Command::command(std::string const &str){
@@ -27,6 +26,15 @@ void Command::command(std::string const &str){
         throw "invalid syntax " + key + "\n";
     (this->*it->second)(val);
 }
+
+void Command::command(t_commandList const &list)
+{
+    auto it = this->method_map.find(list.command);
+    if(it == this->method_map.end())
+        throw "invalid syntax " + list.command + "\n";
+    (this->*it->second)(list.value);
+}
+
 
 void Command::push(std::string const &str){
     if(str == "" || str.find_first_not_of("1234567890.-+"))

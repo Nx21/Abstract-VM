@@ -18,15 +18,6 @@
 #include <list>
 #include <string>
 
-typedef struct s_commandList
-{
-    size_t line_number;
-    std::string command;
-    std::string value;
-    std::string type;
-} t_commandList;
-
-
 class FileParsing{
     private:
         Command _execCommand;

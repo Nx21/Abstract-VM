@@ -1,4 +1,4 @@
-push int(a)
+push int(15)
 pop
 add
 sub

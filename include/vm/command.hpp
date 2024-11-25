@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
+/*   By: nasr <nasr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:16:37 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/14 14:59:37 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/11/19 19:16:45 by nasr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define  COMMAND_HPP
 
 #include "./stack.hpp"
+#include "../utils/Command_list.hpp"
 #include <map>
 #include <string>
 
@@ -48,6 +49,7 @@ class Command
         };
     public:
         void command(std::string const &str);
+        void command(t_commandList const &list);
 
 };
 #endif

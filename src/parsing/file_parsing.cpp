@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_parcing.cpp                                   :+:      :+:    :+:   */
+/*   file_parsing.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
+/*   By: nasr <nasr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:17:37 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/22 16:51:26 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/11/25 19:31:55 by nasr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 #include <string>
 
 FileParsing::FileParsing(std::string const &filename)
+{
+    this->_file.open(filename);
+    if (!this->_file.is_open())
+        throw "can't open file " + filename + "\n";
+    this->checker();
+    this->exec();
+}
+
+FileParsing::FileParsing()
 {
     this->_file.open(filename);
     if (!this->_file.is_open())
@@ -33,8 +42,7 @@ void FileParsing::checker()
         }
     } catch (std::string const &s) {
         throw "syntex error: " + s;
-    }
-    
+    } 
 }
 
 void FileParsing::parseLine(size_t nl, std::string &s)
@@ -51,14 +59,19 @@ void FileParsing::parseLine(size_t nl, std::string &s)
     trim(val, " \n");
     auto it = this->method_map.find(key);
     if(it == this->method_map.end())
-        throw "line " + std::to_string(nl) + "invalid syntax " + key + "\n";
+        throw "line " + std::to_string(nl) + "invalid key " + key + "\n";
     cmd.command = key;
     if(it->second)
     {
         pos = val.find('(');
         if(pos == val.npos )
             throw "line " + std::to_string(nl) +  ": messing '(' " + val;
-        
+        cmd.type = val.substr(0, pos);
+        cmd.value = val.substr(pos + 1);
+        trim(cmd.value, "\t \n");
+        if(cmd.value.find(')') != cmd.value.size() - 1)
+            throw "line " + std::to_string(nl) +  ": messing or invalid position of ')' " + val;
+        trim(cmd.value, "\t \n)");
         
     }
     else if (val != "")
