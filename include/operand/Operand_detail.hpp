@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Operand_detail.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
+/*   By: nasr <nasr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:54:09 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/14 15:33:34 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/11/29 22:24:43 by nasr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 #include "../../include/ofactory/operandfactory.hpp"
 #include <sstream>
 template<class T>
-Operand<T>::Operand(std::string const &str){
-    std::ostringstream oss(str);
-    oss << this->_val;
+Operand<T>::Operand(std::string const &str): _val(0), _valstr(""){
+    std::stringstream oss(str);
+    // double tmp;
+    oss >> this->_val;
+    // this->_val = tmp;
+    std::cout << std::type_name<std::decltype(this->_val)> << " Operand: " << str << std::endl;
     this->_type = SOperandFactory::StoEO(typeid(T));
+    std::cout  << " Operand: " << this->_type << std::endl;
     this->_valstr = std::to_string(this->_val);
 }
 template<class T>
@@ -109,6 +113,8 @@ bool Operand<T>::operator==( IOperand const & rhs ) const{
 template<class T>
 std::string const &Operand<T>::toString( void ) const 
 {
+    std::cerr << this->_val << ':';
+    // this->_valstr = std::to_string(this->_val);
     return this->_valstr;
 }
 #endif

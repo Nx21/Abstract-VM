@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_parsing.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
+/*   By: nasr <nasr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:57:56 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/22 16:49:57 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/11/29 21:58:34 by nasr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ class FileParsing{
             {"div", 0},
             {"mod", 0},
             {"print", 0},
-            {"exit", 0}
+            {"exit", 0},
+            {"dump", 0}
         };
     public:
         FileParsing(std::string const &filename);
+        FileParsing();
 };
 
 

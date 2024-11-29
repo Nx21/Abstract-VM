@@ -6,7 +6,7 @@
 /*   By: nasr <nasr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:16:37 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/11/19 19:16:45 by nasr             ###   ########.fr       */
+/*   Updated: 2024/11/29 21:59:23 by nasr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ class Command
 {
     private:
         Stack _stack;
-        typedef void (Command::*method_function)(std::string const &);
-        void push(std::string const &str);
-        void pop(std::string const &str);
-        void dump(std::string const &str);
-        void Assert(std::string const &str);
-        void add(std::string const &str);
-        void sub(std::string const &str);
-        void mul(std::string const &str);
-        void div(std::string const &str);
-        void mod(std::string const &str);
-        void print(std::string const &str);
-        void exit(std::string const &str);
+        typedef void (Command::*method_function)(t_commandList const &);
+        void push(t_commandList const &list);
+        void pop(t_commandList const &list);
+        void dump(t_commandList const &list);
+        void Assert(t_commandList const &list);
+        void add(t_commandList const &list);
+        void sub(t_commandList const &list);
+        void mul(t_commandList const &list);
+        void div(t_commandList const &list);
+        void mod(t_commandList const &list);
+        void print(t_commandList const &list);
+        void exit(t_commandList const &list);
         std::map<std::string, method_function > method_map = 
         {
             {"push", &Command::push},
@@ -44,12 +44,14 @@ class Command
             {"mul", &Command::mul},
             {"div", &Command::div},
             {"mod", &Command::mod},
+            {"dump", &Command::dump},
             {"print", &Command::print},
             {"exit", &Command::exit}
         };
     public:
+        void exec(t_commandList const &list);
         void command(std::string const &str);
-        void command(t_commandList const &list);
+        void command();
 
 };
 #endif

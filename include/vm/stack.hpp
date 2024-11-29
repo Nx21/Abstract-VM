@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
+/*   By: nasr <nasr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:16:37 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/16 13:59:39 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/11/29 21:43:36 by nasr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ class Stack
     private:
         std::deque<const IOperand*> _stack;
     public:
-        void push(std::string const &str);
+        void push(std::string const &key, std::string const &value);
         void pop();
         void dump() const;
-        void Assert(std::string const &str);
+        void Assert(std::string const &key, std::string const &value);
         void add();
         void sub();
         void mul();

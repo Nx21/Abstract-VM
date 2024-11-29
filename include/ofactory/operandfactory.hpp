@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operandfactory.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasreddinehanafi <nasreddinehanafi@stud    +#+  +:+       +#+        */
+/*   By: nasr <nasr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:25:54 by nasreddineh       #+#    #+#             */
-/*   Updated: 2024/10/14 13:53:13 by nasreddineh      ###   ########.fr       */
+/*   Updated: 2024/11/25 20:06:42 by nasr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ class SOperandFactory{
             static class StoEO _StoEO;
             return _StoEO[str];
         };;
-        static IOperand const * StoO(std::string const &str);
+        static IOperand const * StoO(const std::string &key, const std::string &value);
 };
 
 #endif
